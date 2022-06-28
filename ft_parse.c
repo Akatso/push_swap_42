@@ -1,48 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_arg.c                                        :+:      :+:    :+:   */
+/*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: slepetit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/15 01:18:15 by slepetit          #+#    #+#             */
-/*   Updated: 2022/06/15 03:13:04 by slepetit         ###   ########.fr       */
+/*   Created: 2022/06/28 17:40:51 by slepetit          #+#    #+#             */
+/*   Updated: 2022/06/28 19:27:49 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_space_neg(char *stack)
+size_t	ft_size(char **sstr)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	if (stack[i] == 32 && stack[i + 1] == 32)
-		ft_error();
-	else if (stack[i] == '-' && (stack[i + 1] == '-' || stack[i] == ' '))
-		ft_error();
-	return (1);
+	while (sstr[i])
+		i++;
+	return (i);
 }
 
-int	ft_check(char *stack)
+int	*ft_check(char **sstr)
 {
+	int	*tab;
 	int	i;
 
 	i = 0;
-	if (stack[i] == 32)
-		ft_error();
-	while (stack[i])
+	tab = malloc(sizeof(int) * ft_size(sstr));
+	if (!tab)
+		return (NULL);
+	while (sstr[i])
 	{
-		if (stack[i] == 32 || stack[i] == '-')
-		{
-			ft_space_neg(&(stack[i]));
-			i++;
-		}
-		else if (stack[i] < '0' || stack[i] > '9')
-			ft_error();
+		tab[i] = ft_atoi(sstr[i]);
+		printf("%d\n", tab[i]);
 		i++;
 	}
-	if (stack[i - 1] == 32)
-		ft_error();
-	return (1);
+	return (tab);
 }
