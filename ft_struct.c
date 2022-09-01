@@ -61,6 +61,15 @@ int	ft_pos_stack(int size, int *tab, int i)
 	return (pos);
 }
 
+void	ft_protect(t_stack **a, int *tab)
+{
+	if (!*a)
+	{
+		free(tab);
+		ft_exit();
+	}
+}
+
 void	ft_fillstack(t_stack **a, int size, int *tab)
 {
 	int		i;
@@ -68,6 +77,7 @@ void	ft_fillstack(t_stack **a, int size, int *tab)
 
 	i = 0;
 	(*a) = malloc(sizeof(t_stack));
+	ft_protect(a, tab);
 	(*a)->next = NULL;
 	(*a)->prev = NULL;
 	(*a)->data = tab[i];
@@ -77,6 +87,7 @@ void	ft_fillstack(t_stack **a, int size, int *tab)
 	while (i < size)
 	{
 		tmp->next = malloc(sizeof(t_stack));
+		ft_protect(a, tab);
 		tmp->next->data = tab[i];
 		tmp->next->pos = ft_pos_stack(size, tab, i);
 		tmp->next->next = NULL;

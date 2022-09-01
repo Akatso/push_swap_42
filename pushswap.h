@@ -16,7 +16,6 @@
 # include <stddef.h>
 # include <string.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <limits.h>
 
 typedef struct s_stack
@@ -27,10 +26,12 @@ typedef struct s_stack
 	int				pos;
 }		t_stack;
 
+void	ft_protect(t_stack **a, int *tab);
+void	ft_multiarg(char **arg, int ac, int **tab);
 void	ft_sort_group_three_a(t_stack **lst);
 void	ft_sort_group_three_b(t_stack **lst);
 void	ft_sort_group_four(t_stack **a, t_stack **b);
-int		ft_previously_tris(t_stack **lst, int size);
+int		ft_previous_sort(t_stack **lst, int size);
 void	ft_sort_group_five(t_stack **a, t_stack **b);
 void	ft_parse_sort(t_stack **a, t_stack **b, int size);
 size_t	ft_len(char **str);
@@ -43,8 +44,7 @@ void	ft_pa(t_stack **a, t_stack **b);
 int		ft_exit(void);
 void	ft_free(char **str);
 int		ft_onearg(char *arg, int **tab);
-int		ft_multiarg(char **arg, int ac, int **tab);
-int		ft_len_max_bite(int size);
+int		ft_bit_len(int size);
 void	ft_radix(t_stack **a, t_stack **b, int size);
 void	ft_rra(t_stack **lst);
 void	ft_rrb(t_stack **lst);

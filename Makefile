@@ -1,14 +1,14 @@
-SRC += ft_parse_sorting2.c
-SRC += ft_parse_sorting.c
+SRC += ft_sort2.c
+SRC += ft_sort1.c
 SRC += ft_parsetab.c
-SRC += ft_push.c
-SRC += ft_pushswap.c
+SRC += ft_papb.c
+SRC += ft_push_swap.c
 SRC += ft_radix.c
-SRC += ft_reverse.c
-SRC += ft_rotate.c
+SRC += ft_rrr.c
+SRC += ft_rr.c
 SRC += ft_ss.c
 SRC += ft_struct.c
-SRC += ft_utils.c
+SRC += ft_utils1.c
 SRC += ft_utils2.c
 
 OBJ = $(SRC:.c=.o)

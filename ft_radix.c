@@ -11,27 +11,27 @@
 /* ************************************************************************** */
 #include "./pushswap.h"
 
-int	ft_len_max_bite(int size)
+int	ft_bit_len(int size)
 {
-	int	bytes;
+	int	bit;
 
-	bytes = 32;
-	while (--bytes >= 0)
-		if ((size >> bytes) & 1)
+	bit = 32;
+	while (--bit >= 0)
+		if ((size >> bit) & 1)
 			break ;
-	return (bytes);
+	return (bit);
 }
 
 void	ft_radix(t_stack **a, t_stack **b, int size)
 {
-	int	len_bytes;
+	int	bit_len;
 	int	i;
 	int	y;
 
 	y = -1;
 	i = -1;
-	len_bytes = ft_len_max_bite(size);
-	while (++i <= len_bytes)
+	bit_len = ft_bit_len(size);
+	while (++i <= bit_len)
 	{
 		while (++y < size)
 		{

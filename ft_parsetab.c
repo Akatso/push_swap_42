@@ -37,7 +37,7 @@ void	ft_double(int *tab, int end, char **str, int ac)
 				j++;
 			if (j == end)
 				break ;
-			if ((tab[j] == tab[i]))
+			if (tab[j] == tab[i])
 			{
 				free(tab);
 				if (ac == 2)

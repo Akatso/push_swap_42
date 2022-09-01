@@ -12,6 +12,24 @@
 
 #include "pushswap.h"
 
+size_t	ft_size(const char *s, char c)
+{
+	size_t	i;
+	size_t	size;
+
+	i = 0;
+	size = 0;
+	while (s[i] == c && s[i])
+		i++;
+	while (s[i])
+	{
+		if ((s[i] == c && s[i + 1] != c) || !s[i + 1])
+			size++;
+		i++;
+	}
+	return (size);
+}
+
 char	**ft_wordfree(char **tab, int i)
 {
 	int	j;
@@ -97,20 +115,4 @@ char	**ft_split(char const *s, char c)
 	}
 	tab[i] = NULL;
 	return (tab);
-}
-
-void	ft_digit(char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-	{
-		if ((s[i] < '0' || s[i] > '9') && (s[i] != '-' && s[i] != 32))
-			ft_exit();
-		if (s[i] == '-')
-			if (s[i + 1] < '0' || s[i + 1] > '9')
-				ft_exit();
-		i++;
-	}
 }

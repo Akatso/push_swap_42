@@ -12,65 +12,33 @@
 
 #include "./pushswap.h"
 
-void	ft_sort_group_four(t_stack **a, t_stack **b)
-{
-	if ((*a)->pos > (*a)->next->pos)
-		ft_sa(a);
-	ft_pb(a, b);
-	ft_sort_group_three_a(a);
-	ft_pa(a, b);
-	if (!ft_is_list_sort(a))
-		ft_sort_group_four(a, b);
-}
-
-int	ft_previously_tris(t_stack **lst, int size)
+int	ft_previous_sort(t_stack **lst, int size)
 {
 	t_stack	*tmp;
-	int		bcmp;
-	int		pui;
+	int		pos_cmp;
+	int		pow;
 	int		i;
 
 	i = size;
-	bcmp = 0;
+	pos_cmp = 0;
 	tmp = *lst;
-	pui = 1;
+	pow = 1;
 	while (--i)
-		pui *= 10;
+		pow *= 10;
 	while (--size)
 	{
 		if (tmp->pos > tmp->next->pos)
-			bcmp += 1 * pui;
+			pos_cmp += 1 * pow;
 		if (size == 1)
 		{
 			if ((*lst)->pos > tmp->next->pos)
-				bcmp += 1;
-			return (bcmp);
+				pos_cmp += 1;
+			return (pos_cmp);
 		}
-		pui /= 10;
+		pow /= 10;
 		tmp = tmp->next;
 	}
-	return (bcmp);
-}
-
-void	ft_sort_group_five(t_stack **a, t_stack **b)
-{
-	int	i;
-
-	i = 0;
-	while (i < 5)
-	{
-		if ((*a)->pos == 1 || (*a)->pos == 2 || (*a)->pos == 3)
-			ft_pb(a, b);
-		else
-			ft_ra(a);
-		i++;
-	}
-	ft_sort_group_three_b(b);
-	if ((*a)->pos > (*a)->next->pos)
-		ft_sa(a);
-	ft_pa(a, b);
-	ft_pa(a, b);
-	ft_pa(a, b);
+	return (pos_cmp);
 }
 
 void	ft_parse_sort(t_stack **a, t_stack **b, int size)
@@ -91,4 +59,18 @@ void	ft_parse_sort(t_stack **a, t_stack **b, int size)
 	}
 	else
 		ft_radix(a, b, size);
+}
+
+int	ft_is_list_sort(t_stack **lst)
+{
+	t_stack	*tmp;
+
+	tmp = *lst;
+	while (tmp->next != NULL)
+	{
+		if (tmp->data > tmp->next->data)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
 }

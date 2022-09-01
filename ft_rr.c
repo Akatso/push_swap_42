@@ -14,46 +14,46 @@
 
 void	ft_ra(t_stack **lst)
 {
-	t_stack	*lstmp;
+	t_stack	*tmp;
 
 	if (!(*lst))
 		return ;
 	if ((*lst)->next == NULL)
 		return ;
-	lstmp = (*lst);
-	while (lstmp->next != NULL)
-		lstmp = lstmp->next;
-	lstmp->next = malloc(sizeof(t_stack));
-	lstmp->next->next = NULL;
-	lstmp->next->prev = (lstmp);
-	lstmp->next->data = (*lst)->data;
-	lstmp->next->pos = (*lst)->pos;
-	lstmp = (*lst);
+	tmp = (*lst);
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = malloc(sizeof(t_stack));
+	tmp->next->next = NULL;
+	tmp->next->prev = (tmp);
+	tmp->next->data = (*lst)->data;
+	tmp->next->pos = (*lst)->pos;
+	tmp = (*lst);
 	(*lst) = (*lst)->next;
 	(*lst)->prev = NULL;
-	free(lstmp);
+	free(tmp);
 	write(1, "ra\n", 3);
 }
 
 void	ft_rb(t_stack **lst)
 {
-	t_stack	*lstmp;
+	t_stack	*tmp;
 
 	if (!(*lst))
 		return ;
 	if ((*lst)->next == NULL)
 		return ;
-	lstmp = (*lst);
-	while (lstmp->next != NULL)
-		lstmp = lstmp->next;
-	lstmp->next = malloc(sizeof(t_stack));
-	lstmp->next->next = NULL;
-	lstmp->next->prev = (lstmp);
-	lstmp->next->data = (*lst)->data;
-	lstmp->next->pos = (*lst)->pos;
-	lstmp = (*lst);
+	tmp = (*lst);
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = malloc(sizeof(t_stack));
+	tmp->next->next = NULL;
+	tmp->next->prev = (tmp);
+	tmp->next->data = (*lst)->data;
+	tmp->next->pos = (*lst)->pos;
+	tmp = (*lst);
 	(*lst) = (*lst)->next;
 	(*lst)->prev = NULL;
-	free(lstmp);
+	free(tmp);
 	write(1, "rb\n", 3);
 }

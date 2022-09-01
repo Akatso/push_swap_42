@@ -57,7 +57,7 @@ int	ft_onearg(char *arg, int **tab)
 	return (size);
 }
 
-int	ft_multiarg(char **arg, int ac, int **tab)
+void	ft_multiarg(char **arg, int ac, int **tab)
 {
 	int	i;
 	int	size;
@@ -75,8 +75,6 @@ int	ft_multiarg(char **arg, int ac, int **tab)
 		i++;
 	}
 	*tab = ft_check(arg, ac);
-	size = ft_len(arg + 1);
-	return (size);
 }
 
 int	main(int ac, char **av)

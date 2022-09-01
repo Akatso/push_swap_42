@@ -12,18 +12,20 @@
 
 #include "pushswap.h"
 
-int	ft_is_list_sort(t_stack **lst)
+void	ft_digit(char *s)
 {
-	t_stack	*tmp;
+	size_t	i;
 
-	tmp = *lst;
-	while (tmp->next != NULL)
+	i = 0;
+	while (s[i])
 	{
-		if (tmp->data > tmp->next->data)
-			return (0);
-		tmp = tmp->next;
+		if ((s[i] < '0' || s[i] > '9') && (s[i] != '-' && s[i] != 32))
+			ft_exit();
+		if (s[i] == '-')
+			if (s[i + 1] < '0' || s[i + 1] > '9')
+				ft_exit();
+		i++;
 	}
-	return (1);
 }
 
 size_t	ft_strlen(const char *s)
@@ -34,24 +36,6 @@ size_t	ft_strlen(const char *s)
 	while (s[i])
 		i++;
 	return (i);
-}
-
-size_t	ft_size(const char *s, char c)
-{
-	size_t	i;
-	size_t	size;
-
-	i = 0;
-	size = 0;
-	while (s[i] == c && s[i])
-		i++;
-	while (s[i])
-	{
-		if ((s[i] == c && s[i + 1] != c) || !s[i + 1])
-			size++;
-		i++;
-	}
-	return (size);
 }
 
 int	ft_atoi(const char *nptr)
