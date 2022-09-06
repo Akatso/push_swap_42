@@ -6,10 +6,11 @@
 /*   By: slepetit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 16:51:07 by slepetit          #+#    #+#             */
-/*   Updated: 2022/08/01 12:30:02 by mafissie         ###   ########.fr       */
+/*   Updated: 2022/09/06 20:36:28 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "./pushswap.h"
+
+#include "pushswap.h"
 
 int	ft_bit_len(int size)
 {
