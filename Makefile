@@ -1,15 +1,15 @@
-SRC += ft_sort2.c
-SRC += ft_sort1.c
-SRC += ft_parsetab.c
-SRC += ft_papb.c
-SRC += ft_push_swap.c
-SRC += ft_radix.c
-SRC += ft_rrr.c
-SRC += ft_rr.c
-SRC += ft_ss.c
-SRC += ft_struct.c
-SRC += ft_utils1.c
-SRC += ft_utils2.c
+SRC = ft_sort2.c \
+	  ft_sort1.c \
+	  ft_parsetab.c \
+	  ft_papb.c \
+	  ft_push_swap.c \
+	  ft_radix.c \
+	  ft_rrr.c \
+	  ft_rr.c \
+	  ft_ss.c \
+	  ft_struct.c \
+	  ft_utils1.c \
+	  ft_utils2.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -24,8 +24,8 @@ all: $(EXEC)
 $(EXEC): $(OBJ)
 	$(CC) $(CFLAGS) -o $(EXEC) $(OBJ) 
 
-$(OBJ):
-	$(CC) $(CFLAGS) -c $(SRC)
+%.o: $.c
+	$(CC) $(CFLAGS) $< -c -o $@
 
 clean:
 	rm -rf $(OBJ)

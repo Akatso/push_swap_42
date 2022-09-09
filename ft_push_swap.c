@@ -6,7 +6,7 @@
 /*   By: slepetit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:50:12 by slepetit          #+#    #+#             */
-/*   Updated: 2022/09/06 20:35:04 by slepetit         ###   ########.fr       */
+/*   Updated: 2022/09/09 04:03:39 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,8 @@ int	ft_onearg(char *arg, int **tab)
 void	ft_multiarg(char **arg, int ac, int **tab)
 {
 	int	i;
-	int	size;
 
 	i = 0;
-	size = 0;
 	while (arg[i])
 	{
 		if (arg[i] == 0)
@@ -97,7 +95,8 @@ int	main(int ac, char **av)
 	else
 		ft_multiarg(av + 1, ac, &tab);
 	ft_fillstack(&a, size, tab);
-	ft_parse_sort(&a, &b, size);
+	if (!ft_is_list_sort(&a))
+		ft_parse_sort(&a, &b, size);
 	free(tab);
 	ft_freestack(&a, &b);
 	return (0);

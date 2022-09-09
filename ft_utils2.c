@@ -6,7 +6,7 @@
 /*   By: slepetit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 06:57:04 by slepetit          #+#    #+#             */
-/*   Updated: 2022/08/16 06:57:09 by slepetit         ###   ########.fr       */
+/*   Updated: 2022/09/07 02:35:47 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void	ft_digit(char *s)
 	i = 0;
 	while (s[i])
 	{
-		if ((s[i] < '0' || s[i] > '9') && (s[i] != '-' && s[i] != 32))
+		if ((s[i] < '0' || s[i] > '9') && (s[i] != '-' && s[i] != '+'
+				&& s[i] != 32))
 			ft_exit();
-		if (s[i] == '-')
+		if (s[i] == '-' || s[i] == '+')
 			if (s[i + 1] < '0' || s[i + 1] > '9')
 				ft_exit();
 		i++;
@@ -58,10 +59,20 @@ int	ft_atoi(const char *nptr)
 	while (*nptr && (*nptr >= '0' && *nptr <= '9'))
 	{
 		nb = (nb * 10) + *(nptr++) - 48;
-		if ((((nb * neg) > INT_MAX) || (nb * neg) < INT_MIN))
+		if (((((nb * neg) > INT_MAX) || (nb * neg) < INT_MIN))
+			|| (*nptr && !(*nptr >= '0' && *nptr <= '9')))
 			ft_exit();
 	}
 	return (nb * neg);
+}
+
+int	ft_isspace(char c)
+{
+	if (c == '\r' || c == '\f' || c == '\v'
+		|| c == '\n' || c == ' ' || c == '\t')
+		return (1);
+	else
+		return (0);
 }
 
 int	ft_atoi_free(const char *nptr, char **str)
@@ -71,8 +82,7 @@ int	ft_atoi_free(const char *nptr, char **str)
 
 	neg = 1;
 	nb = 0;
-	while (*nptr && (*nptr == '\r' || *nptr == '\f' || *nptr == '\v'
-			|| *nptr == '\n' || *nptr == ' ' || *nptr == '\t'))
+	while (*nptr && ft_isspace(*nptr))
 		nptr++;
 	if (*nptr == '-')
 	{
@@ -84,7 +94,8 @@ int	ft_atoi_free(const char *nptr, char **str)
 	while (*nptr && (*nptr >= '0' && *nptr <= '9'))
 	{
 		nb = (nb * 10) + *(nptr++) - 48;
-		if ((((nb * neg) > INT_MAX) || (nb * neg) < INT_MIN))
+		if ((((nb * neg) > INT_MAX) || (nb * neg) < INT_MIN)
+			|| (*nptr && !(*nptr >= '0' && *nptr <= '9')))
 		{
 			ft_free(str);
 			ft_exit();

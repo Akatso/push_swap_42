@@ -6,15 +6,13 @@
 /*   By: slepetit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 06:57:43 by slepetit          #+#    #+#             */
-/*   Updated: 2022/08/16 06:57:59 by slepetit         ###   ########.fr       */
+/*   Updated: 2022/09/09 03:56:41 by slepetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSHSWAP_H
 # define PUSHSWAP_H
 # include <stdlib.h>
-# include <stddef.h>
-# include <string.h>
 # include <unistd.h>
 # include <limits.h>
 
@@ -65,5 +63,6 @@ char	*ft_wordtab(const char *s, char c, char **str);
 int		ft_wordnbr(char const *s, char c);
 char	**ft_split(char const *s, char c);
 void	ft_digit(char *s);
+int		ft_isspace(char c);
 
 #endif
